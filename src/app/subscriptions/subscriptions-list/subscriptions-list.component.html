@@ -1,0 +1,32 @@
+<div style="margin-top: 72px; text-align: center; width: 100%;">
+  <ng-template #loading>
+    <i class="fa fa-spinner" aria-hidden="true"></i>
+  </ng-template>
+</div>
+
+
+
+
+<h3>Subscriptions list of the user</h3>
+<ng-container *ngIf="subsciptions$ | async; else loading">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">Type</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subsciption of (subsciptions$ | async)?.subscriptions; index as i">
+        <th scope="row">{{subsciption.id }}</th>
+        <td>
+          {{ subsciption.name }}
+        </td>
+        <td>{{subsciption.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

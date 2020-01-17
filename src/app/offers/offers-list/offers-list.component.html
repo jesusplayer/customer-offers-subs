@@ -1,0 +1,30 @@
+<div style="margin-top: 72px; text-align: center; width: 100%;">
+  <ng-template #loading>
+    <i class="fa fa-spinner" aria-hidden="true"></i>
+  </ng-template>
+</div>
+<h3>Offers list of the user</h3>
+<ng-container *ngIf=" offers$ | async; else loading">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">Contract sart on</th>
+        <th scope="col">Contract end on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let offer of (offers$ | async)?.offers;  index as i">
+        <th scope="row">{{offer.id }}</th>
+        <td>
+          {{ offer.name }}
+        </td>
+        <td>{{offer.contractStartDate | date}}</td>
+        <td>{{offer.contractEndDate | date}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</ng-container>
